@@ -1,0 +1,115 @@
+sources:
+  - name: ERP
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCDS_SF100TCL
+    tables:  
+    - name: customer 
+      description: Customer staging table 
+      identifier: CUSTOMER
+
+    - name: date 
+      description: "{{ doc('date')}}"
+      identifier: DATE_DIM
+
+    - name: item 
+      description: product dimension staging table
+      identifier: ITEM
+  
+    - name: store 
+      description: store dimension staging table
+      identifier: STORE
+
+    - name: sales 
+      description: fact sales staging table
+      identifier: STORE_SALES
+      columns: 
+        - name: netamount
+          description: the amount of net sales
+
+  - name: stg
+    database: TESTPROJ_DBT_DB
+    schema: STAGING
+    tables:
+    - name: customer 
+      description: Customer staging table 
+      identifier: Customer_stg
+
+    - name: date 
+      description: "{{ doc('date')}}"
+      identifier: Date_stg
+
+    - name: item 
+      description: product dimension staging table
+      identifier: Item_stg 
+
+    - name: store 
+      description: store dimension staging table
+      identifier: store_stg   
+
+    - name: sales 
+      description: fact sales staging table
+      identifier: Store_sales_stg
+      columns: 
+        - name: netamount
+          description: the amount of net sales
+  
+    - name: sales_incr
+      description: fact sales staging table for testing incremental loads
+      identifier: STORE_SALES_RAW_INCREMENTAL
+      columns: 
+        - name: netamount
+          description: the amount of net sales
+
+  # - name: trf
+  #   database: TESTPROJ_DBT_DB
+  #   schema: TRANSFORM
+  #   tables:
+  #    - name: customer_trf 
+  #      description: Customer transform table 
+  #      identifier: d_Customer_trf
+
+  #    - name: date 
+  #      description: "{{ doc('date')}}"
+  #      identifier: d_Date_trf
+
+  #    - name: item 
+  #      description: product dimension presentation table
+  #      identifier: d_Item_trf
+
+  #    - name: store 
+  #      description: store dimension presentation table
+  #      identifier: d_Store_trf
+
+  #    - name: sales 
+  #      description: fact sales presentation table
+  #      identifier: f_Sales_trf
+  #      columns: 
+  #        - name: netamount
+  #          description: the amount of net sales
+
+  - name: presentation
+    database: TESTPROJ_DBT_DB
+    schema: presentation
+    tables:
+     - name: customer 
+       description: Customer presentation table 
+       identifier: d_Customer
+
+     - name: date 
+       description: "{{ doc('date')}}"
+       identifier: d_Date
+
+     - name: item 
+       description: product dimension presentation table
+       identifier: d_Item
+
+     - name: store 
+       description: store dimension presentation table
+       identifier: d_Store
+
+     - name: sales 
+       description: fact sales presentation table
+       identifier: f_Sales
+       columns: 
+         - name: netamount
+           description: the amount of net sales

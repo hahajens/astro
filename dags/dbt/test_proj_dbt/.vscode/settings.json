@@ -1,0 +1,26 @@
+{
+    "sqltools.connections": [
+        {
+            "authenticator": "SNOWFLAKE",
+            "ocspOptions": {
+                "ocspFailOpen": true
+            },
+            "snowflakeOptions": {
+                "clientSessionKeepAlive": true,
+                "clientSessionKeepAliveHeartbeatFrequency": 3600,
+                "schema": "staging",
+                "role": "ACCOUNTADMIN"
+            },
+            "previewLimit": 50,
+            "driver": "Snowflake",
+            "name": "VSCON_TESTPROJ_DBT_DB",
+            "account": "xg08339.west-europe.azure",
+            "username": "hahajonas",
+            "password": "63D5L97qmXfVPB6",
+            "database": "TESTPROJ_DBT_DB",
+            "warehouse": "COMPUTE_WH"
+        }
+    ],
+    "dbt.enableNewLineagePanel": true,
+    "dbt.queryLimit": 1000
+}

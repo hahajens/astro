@@ -1,0 +1,59 @@
+# models:
+#   - name: Customer_stg
+#     columns: 
+#       - name: C_CUSTOMER_ID
+#         tests: 
+#           - string_not_empty
+
+#   - name: Item_stg
+#     columns: 
+#       - name: C_ITEM_ID
+#         tests:
+#           - string_not_empty
+
+
+#   - name: d_Customer
+#     columns: 
+#       - name: CustomerId
+#         tests:
+#           - unique
+#           - not null
+        
+#   - name: d_Date
+#     columns:
+#       - name: D_Date_SK
+#         tests:
+#           - unique
+#           - not null
+
+#   - name: d_Item
+#     columns:
+#       - name: ItemSK
+#         tests:
+#           - unique
+#           - not null
+
+#   - name: d_Store
+#     columns:
+#       - name: StoreSK
+#         tests:
+#           - unique
+#           - not null
+
+#   - name: f_Sales
+#     columns:
+#       - name: TicketId
+#         tests:
+#           - unique
+#           - not null
+
+models: 
+  - name: Store_stg
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("d_Store")
+          # group_by: [col1, col2] # (Optional)
+          # compare_group_by: [col1, col2] # (Optional)
+          # factor: 1 # (Optional)
+          # row_condition: "id is not null" # (Optional)
+          # compare_row_condition: "id is not null" # (Optional)

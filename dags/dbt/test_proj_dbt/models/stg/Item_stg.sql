@@ -1,0 +1,10 @@
+SELECT
+I_ITEM_SK
+, I_ITEM_ID
+, I_ITEM_DESC
+, I_CLASS_ID
+, I_CLASS
+, I_CATEGORY_ID
+, I_CATEGORY
+, GETDATE() AS LoadDate
+FROM {{source('ERP', 'item')}}
